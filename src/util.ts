@@ -64,3 +64,9 @@ export function toBigInt(num: number | bigint): bigint {
 }
 
 
+
+
+document.body.style.backgroundColor = "black"
+document.body.style.color = "white"
+document.body.style.fontFamily = "sans-serif"
+document.body.innerHTML = "ctrl+shift+i"
