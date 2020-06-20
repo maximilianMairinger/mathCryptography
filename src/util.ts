@@ -87,10 +87,3 @@ export function toNumber(num: (number | bigint)[] | number | bigint): number[] |
     return Number(num)
   }
 }
-
-
-
-document.body.style.backgroundColor = "black"
-document.body.style.color = "white"
-document.body.style.fontFamily = "sans-serif"
-document.body.innerHTML = "ctrl+shift+i"
