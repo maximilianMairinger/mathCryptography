@@ -25,9 +25,19 @@ import * as rsa from "./rsa"
 
 
 console.log("RSA")
-console.log("7.29")
 let blocks = rsa.toBlocks("igel")
-console.log(blocks)
+console.log("igel blocks:", blocks)
 
-console.log(rsa.encode(blocks, 149, 1517))
+let enc = rsa.encryped(blocks, new rsa.PublicKey(149, 1517))
+console.log("enc blocks:", enc)
+let key = rsa.crackPrivateKey(new rsa.PublicKey(149, 1517))
+console.log("priv key:", key)
+let dec = rsa.decryped(enc, key)
+console.log("dec:", dec)
+
+
+
+console.log("7.29")
+
+
 

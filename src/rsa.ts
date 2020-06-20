@@ -1,6 +1,6 @@
 import xrray from "xrray"
 import util, { alphabetIndex, prepText, toBigInt, toNumber } from "./util"
-import * as bigMath from "bigint-math"
+import * as prime from "primes-and-factors"
 const { toNumbers, toString, setAlphabet: _setAlphabet, setOffset, getAlphabet } = util()
 export { alphabetIndex, toNumbers }
 xrray(Array)
@@ -97,23 +97,49 @@ export function fromBlocks(blocks: number[], blockSize?: number): string {
   return toString(fromBlocksToNumbers(blocks, blockSize))
 }
 
-export function encodeBlocks(blocks: number[], e: number | bigint, n: number | bigint) {
-  let ee = toBigInt(e)
-  let nn = toBigInt(n)
+export function encodeBlocks(blocks: number[], pub: PublicKey) {
+  let e = toBigInt(pub.e)
+  let n = toBigInt(pub.n)
 
   return blocks.map((b) => {
-    return (toBigInt(b) ** ee) % nn
+    return (toBigInt(b) ** e) % n
   })
 }
 
-export function encode(blocks_string: number[] | string, e: number, n: number) {
+export function encryped(blocks_string: number[] | string, pub: PublicKey) {
   let blocks: number[]
   if (typeof blocks_string === "string") {
     blocks = toBlocks(blocks_string)
   }
   else blocks = blocks_string
 
-  return toNumber(encodeBlocks(blocks, e, n))
+  return toNumber(encodeBlocks(blocks, pub))
 }
 
+export function decryped(encrypedBlocks: number[], priv: PrivateKey) {
+  let d = toBigInt(priv.d)
+  let n = toBigInt(priv.n)
+  let blocks = encrypedBlocks.map((q) => {
+    return (toBigInt(q) ** d) % n
+  })
+
+  return fromBlocks(toNumber(blocks))
+}
+
+
+export function crackPrivateKey(pub: PublicKey) {
+  let [ p, q ] = prime.getFactors(pub.n)
+  let pq = (p - 1) * (q - 1)
+  for (let d = 1; d < pub.e + 1; d++) {
+    if ((d * pub.e) % pq === 1) return new PrivateKey(d, pub.n)
+  }
+}
+
+export class PublicKey {
+  constructor(public e: number, public n: number) {}
+}
+
+export class PrivateKey {
+  constructor(public d: number, public n: number) {}
+}
 
