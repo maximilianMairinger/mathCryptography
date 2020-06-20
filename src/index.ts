@@ -30,5 +30,4 @@ let blocks = rsa.toBlocks("igel")
 console.log(blocks)
 
 console.log(rsa.encode(blocks, 149, 1517))
-console.log("qwqq")
 

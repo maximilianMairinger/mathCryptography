@@ -5,6 +5,7 @@ module.exports = (env) => {
   const common = commonMod(env);
   return merge(common, {
     mode: "development",
-    watch: true
+    watch: true,
+    devtool: 'inline-source-map',
   })
 };

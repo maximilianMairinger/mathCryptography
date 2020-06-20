@@ -6,5 +6,6 @@
     "allowJs": true,
     "sourceMap": true,
     "allowSyntheticDefaultImports": true
-  }
+  },
+  "include": ["src"]
 }
