@@ -1,2 +1,0 @@
-# mathCryptography
-Created with CodeSandbox
