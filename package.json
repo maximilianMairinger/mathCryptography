@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "dev": "webpack --config webpack.dev.config.js"
+    "build": "webpack --config webpack.prod.config.js",
+    "dev": "webpack --config webpack.dev.config.js",
+    "start": "node dist/index"
   },
   "dependencies": {
     "all-the-german-words": "1.1.0",
