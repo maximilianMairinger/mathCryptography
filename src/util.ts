@@ -59,10 +59,34 @@ export function prepText(text: string) {
   return text.toLowerCase()
 }
 
-export function toBigInt(num: number | bigint): bigint {
-  return (BigInt as any)(num)
+
+
+export function toBigInt(num: number | bigint): bigint
+export function toBigInt(num: (number | bigint)[]): bigint[]
+export function toBigInt(num: (number | bigint)[] | number | bigint): bigint[] | bigint {
+  if (num instanceof Array) {
+    return num.map((q) => {
+      return toBigInt(q)
+    })
+  }
+  else {
+    return BigInt(num)
+  }
 }
 
+
+export function toNumber(num: number | bigint): number
+export function toNumber(num: (number | bigint)[]): number[]
+export function toNumber(num: (number | bigint)[] | number | bigint): number[] | number {
+  if (num instanceof Array) {
+    return num.map((q) => {
+      return toNumber(q)
+    })
+  }
+  else {
+    return Number(num)
+  }
+}
 
 
 

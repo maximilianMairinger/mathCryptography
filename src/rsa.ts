@@ -1,5 +1,5 @@
 import xrray from "xrray"
-import util, { alphabetIndex, prepText, toBigInt } from "./util"
+import util, { alphabetIndex, prepText, toBigInt, toNumber } from "./util"
 import * as bigMath from "bigint-math"
 const { toNumbers, toString, setAlphabet: _setAlphabet, setOffset, getAlphabet } = util()
 export { alphabetIndex, toNumbers }
@@ -113,7 +113,7 @@ export function encode(blocks_string: number[] | string, e: number, n: number) {
   }
   else blocks = blocks_string
 
-  return encodeBlocks(blocks, e, n)
+  return toNumber(encodeBlocks(blocks, e, n))
 }
 
 
