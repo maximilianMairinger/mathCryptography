@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "all-the-german-words": "1.1.0",
+    "bigint-math": "0.2.0",
     "xrray": "4.6.7"
   },
   "devDependencies": {

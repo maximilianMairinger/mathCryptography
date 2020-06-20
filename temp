@@ -1,0 +1,11 @@
+let s = "igel"
+let numbers = rsa.toNumbers(s, true)
+let blocks = rsa.toBlocks(numbers)
+let igel = rsa.fromBlocks(blocks)
+let numbers2 = rsa.fromBlocksToNumbers(blocks)
+console.log(numbers)
+console.log(blocks)
+console.log(numbers2)
+console.log(igel)
+console.log(s)
+console.log(s === igel)

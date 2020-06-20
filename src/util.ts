@@ -58,3 +58,9 @@ export default function() {
 export function prepText(text: string) {
   return text.toLowerCase()
 }
+
+export function toBigInt(num: number | bigint): bigint {
+  return (BigInt as any)(num)
+}
+
+

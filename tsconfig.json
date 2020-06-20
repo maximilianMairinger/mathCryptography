@@ -2,15 +2,11 @@
   "compilerOptions": {
     "strict": true,
     "module": "commonjs",
-    "jsx": "preserve",
-    "esModuleInterop": true,
     "sourceMap": true,
-    "allowJs": true,
-    "lib": [
-      "es6",
-      "dom"
-    ],
     "rootDir": "src",
-    "moduleResolution": "node"
+    "esModuleInterop": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "target": "ES2020"
   }
 }

@@ -1,5 +1,5 @@
 import caesar, { crackGermanCypherText, alphabetIndex } from "./caesar"
-import { toBlocks, setOffset } from "./rsa"
+import * as rsa from "./rsa"
 
 
 console.log("Caesar")
@@ -26,10 +26,9 @@ console.log("crack:", crackGermanCypherText(encrypted, {alphabet: alphabetIndex.
 
 console.log("RSA")
 console.log("7.29")
-setOffset(1)
-let blocks = toBlocks("igel")
+let blocks = rsa.toBlocks("igel")
 console.log(blocks)
 
-
-
+console.log(rsa.encode(blocks, 149, 1517))
+console.log("qwqq")
 
