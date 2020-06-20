@@ -43,4 +43,4 @@ Watch files for changes, incremental rebuild when change is detected.
  $ npm run dev
 ```
 
-Open index.html in a modern webbrowser and open the dev console
+Open index.html in a modern webbrowser
