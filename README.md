@@ -1,10 +1,12 @@
 # AM S08C E3 - TGM
 
-## Setup
+## Getting started
 
 ### Prerequesites
 
 Nodejs & git must be installed
+
+### Setup
 
 ```bash
  $ git clone https://github.com/maximilianMairinger/mathCryptography
