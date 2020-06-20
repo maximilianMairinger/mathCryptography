@@ -97,7 +97,7 @@ export function fromBlocks(blocks: number[], blockSize?: number): string {
   return toString(fromBlocksToNumbers(blocks, blockSize))
 }
 
-export function encodeBlocks(blocks: number[], pub: PublicKey) {
+function encryptBlocks(blocks: number[], pub: PublicKey) {
   let e = toBigInt(pub.e)
   let n = toBigInt(pub.n)
 
@@ -106,31 +106,33 @@ export function encodeBlocks(blocks: number[], pub: PublicKey) {
   })
 }
 
-export function encryped(blocks_string: number[] | string, pub: PublicKey) {
+export function encrypt(blocks_string: string, pub: PublicKey, blockSize?: number)
+export function encrypt(blocks_string: number[], pub: PublicKey)
+export function encrypt(blocks_string: number[] | string, pub: PublicKey, blockSize?: number) {
   let blocks: number[]
   if (typeof blocks_string === "string") {
-    blocks = toBlocks(blocks_string)
+    blocks = toBlocks(blocks_string, blockSize)
   }
   else blocks = blocks_string
 
-  return toNumber(encodeBlocks(blocks, pub))
+  return toNumber(encryptBlocks(blocks, pub))
 }
 
-export function decryped(encrypedBlocks: number[], priv: PrivateKey) {
+export function decrypt(encrypedBlocks: number[], priv: PrivateKey, blockSize?: number) {
   let d = toBigInt(priv.d)
   let n = toBigInt(priv.n)
   let blocks = encrypedBlocks.map((q) => {
     return (toBigInt(q) ** d) % n
   })
 
-  return fromBlocks(toNumber(blocks))
+  return fromBlocks(toNumber(blocks), blockSize)
 }
 
 
 export function crackPrivateKey(pub: PublicKey) {
   let [ p, q ] = prime.getFactors(pub.n)
   let pq = (p - 1) * (q - 1)
-  for (let d = 1; d < pub.e + 1; d++) {
+  for (let d = 1; d < Infinity + 1; d++) {
     if ((d * pub.e) % pq === 1) return new PrivateKey(d, pub.n)
   }
 }
