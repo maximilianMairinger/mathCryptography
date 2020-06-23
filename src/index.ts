@@ -3,6 +3,10 @@ import * as rsa from "./rsa"
 
 
 console.log("Caesar")
+/*
+ Bei der Caesar verschlüsselung werden einfach indices der buchstaben herausgefunden und diese dann um einen Wert (der schlüssel) verschoben.
+ Zum entschlüsseln wird das gleiche in gegenrichtung gemacht.
+*/
 
 console.log("7.30")
 console.log("1)")
@@ -25,6 +29,17 @@ console.log("crack:", crackGermanCypherText(encrypted, {alphabet: alphabetIndex.
 
 
 console.log("RSA")
+/*
+ Bei der RSA verschlüsselung gibt es einen entschlüsselungs-schlüssel und einen verschlüsselungs-schlüssel (deswegen asymitrisch; caesar war symetrisch).
+ Der verschlüsselungkey wird frei propagiert und heißt deswegen auch public key, der entschlüsselungskey wird geheimgehalten und deswegen heißt private key. Jeder client hat ein eigenes RSA-key Paar.
+ Beim senden holt sich der sender von empfänger den public key verschlüsselt mit dem; der empfänger bekommt die nachricht und nur er kann sie dann wieder entschlüsseln.
+
+ Mathematisch wird das möglich gemacht durch das produkt von zwei primzahlen (teil des public keys) welches schnell errechnet werden kann, jedoch nur noch sehr langsam wirder zerlegt werden kann.
+ Das (primfaktor) zerlegen einer sehr hohen zahl ist so aufwändig das es mit heutiger technologie nur über viele jahre möglich wäre so einen key zu knacken. 
+*/
+
+
+
 let blocks = rsa.toBlocks("igel")
 console.log("igel blocks:", blocks)
 
